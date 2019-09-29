@@ -17,5 +17,5 @@ sudo mkdir -p /var/spool/cron/crontabs/
 sudo touch /var/spool/cron/crontabs/root
 if ! grep -Fxq "" /var/spool/cron/crontabs/root
 then
-	sudo echo "@reboot python3 /opt/TrackSystemLogin/capture_image.py" >> /var/spool/cron/crontabs/root
+	sudo echo "@reboot python3 /opt/TrackSystemLogin/main.py" >> /var/spool/cron/crontabs/root
 fi
