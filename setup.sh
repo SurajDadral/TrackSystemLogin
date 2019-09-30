@@ -15,7 +15,8 @@ sudo cp -r $(dirname "$0")/* /opt/TrackSystemLogin/
 # Setup crontab job to execute script at startup
 sudo mkdir -p /var/spool/cron/crontabs/
 sudo touch /var/spool/cron/crontabs/root
-if ! grep -Fxq "" /var/spool/cron/crontabs/root
+if ! grep -Fxq "@reboot python3 /opt/TrackSystemLogin/main.py" /var/spool/cron/crontabs/root
 then
 	sudo echo "@reboot python3 /opt/TrackSystemLogin/main.py" >> /var/spool/cron/crontabs/root
 fi
+sudo crontab /var/spool/cron/crontabs/root
