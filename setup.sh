@@ -5,8 +5,12 @@ sudo apt install python3 python3-opencv cron sed -y
 sudo systemctl start cron
 sudo systemctl enable cron
 
+# Get image and logs storage directory from config.py file
+IMAGE_DIR=$(cat config.py | egrep "config\['IMAGE_DIR'\]" | sed -e "s/^\(.*\)= //g")
+LOGS_DIR=$(cat config.py | egrep "config\['LOGS_DIR'\]" | sed -e "s/^\(.*\)= //g")
+
 # Create directories to store captured images and logs
-sudo mkdir -p /var/TrackSystemLogin/captures /var/TrackSystemLogin/logs
+sudo mkdir -p $IMAGE_DIR $LOGS_DIR
 
 # Copy source code to /opt/TrackSystemLogin/ directory
 sudo mkdir -p /opt/TrackSystemLogin/
