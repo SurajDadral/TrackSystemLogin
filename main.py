@@ -5,7 +5,7 @@ from send_mail import sendMail
 from config import *
 
 # Capture image
-image_files = captureImage(IMAGE_DIR)
+image_files = captureImage(config['IMAGE_DIR'])
 
 # Check internet connectivity
 while True:
@@ -20,12 +20,12 @@ while True:
 
 # Send email
 sendMail(
-    FROM_EMAIL_ADDRESS,
-    PASSWORD_OF_FROM_EMAIL_ADDRESS,
-    TO_EMAIL_ADDRESS,
-    EMAIL_SUBJECT,
-    EMAIL_BODY,
-    SMTP_SERVER_ADDRESS,
-    SMTP_SSL_PORT,
+    config['FROM_EMAIL_ADDRESS'],
+    config['PASSWORD_OF_FROM_EMAIL_ADDRESS'],
+    config['TO_EMAIL_ADDRESS'],
+    config['EMAIL_SUBJECT'],
+    config['EMAIL_BODY'],
+    config['SMTP_SERVER_ADDRESS'],
+    config['SMTP_SSL_PORT'],
     image_files,
 )
